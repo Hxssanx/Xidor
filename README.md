@@ -1,7 +1,16 @@
 # xidor
 
-A lightweight, multithreaded Python utility for identifying potential Insecure Direct Object Reference (IDOR) and broken access control issues during authorized web security assessments.
+Simple multithreaded IDOR parameter and value fuzzer in Python.
 
-`xidor` tests query parameter keys and identifier patterns against a baseline and optional reference response, scoring anomalies using status codes, response similarity diffing, and sensitive JSON key detection.
+It takes a wordlist of parameter names and values, compares responses against a baseline (and an optional reference ID), strips out dynamic noise like UUIDs and timestamps, and flags responses that look different or expose interesting JSON keys.
 
-> **Disclaimer:** This tool is intended strictly for authorized penetration testing, bug bounty programs within explicit scope, and local lab environments. Do not test targets without prior written permission.
+> Only run this on targets you have permission to test (authorized pentests, bug bounty scope, or your own local labs).
+
+## Setup
+
+Requires Python 3.9+.
+
+```bash
+git clone [https://github.com/YOUR-USERNAME/xidor.git](https://github.com/YOUR-USERNAME/xidor.git)
+cd xidor
+pip install -r requirements.txt
